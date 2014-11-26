@@ -1,0 +1,5 @@
+res = self._get_sale_id(cr, uid, [object.id], object.name, None, context=context)
+if res[object.id]:
+    so = pool['sale.order'].browse(cr, uid,  res[object.id], context=context)
+    if so and so.x_wave_id:
+        object.write({'wave_id': so.x_wave_id.id})
